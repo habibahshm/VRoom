@@ -12,6 +12,7 @@ public class CardReader : XRSocketInteractor
     private IXRHoverInteractable interactable;
     private bool validSwipe;
     public TextMeshProUGUI debugScreen;
+   
 
     private void Update()
     {
@@ -19,7 +20,6 @@ public class CardReader : XRSocketInteractor
             if (Vector3.Dot(interactable.transform.forward, Vector3.up) < 0.7f)
             {
                 validSwipe = false;
-                debugScreen.SetText("invalid swipe");
             }
        
     }
@@ -35,7 +35,6 @@ public class CardReader : XRSocketInteractor
         swiping = true;
         validSwipe = true;
         interactable = args.interactableObject;
-        debugScreen.SetText("enetred");
     }
 
     protected override void OnHoverExited(HoverExitEventArgs args)
@@ -45,7 +44,6 @@ public class CardReader : XRSocketInteractor
         float traveledDist = Mathf.Abs(cardFinalPos - cardIntialLocation);
         if(traveledDist > 0.3f && validSwipe)
         {
-            debugScreen.SetText("Unlocked");
             GameObject doorlock = GameObject.Find("DoorPadlock/DoorLockingBar");
             if(doorlock != null)
                 doorlock.SetActive(false);

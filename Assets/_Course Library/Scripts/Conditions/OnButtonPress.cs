@@ -9,6 +9,7 @@ public class OnButtonPress : MonoBehaviour
 {
     [Tooltip("Actions to check")]
     public InputAction action = null;
+    public GameObject lineDebug;
 
     // When the button is pressed
     public UnityEvent OnPress = new UnityEvent();
